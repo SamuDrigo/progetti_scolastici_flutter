@@ -20,13 +20,13 @@ class RecipeDetailScreen extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Ingredienti',
+            'Ingredienti:',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           ...recipe.ingredients.map((ingredient) => Text(ingredient)),
           SizedBox(height: 20),
           Text(
-            'Procedimento',
+            'Procedimento:',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           ...recipe.steps.map((step) => Text(step)),
