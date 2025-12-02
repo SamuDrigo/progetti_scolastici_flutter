@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:esercizio_2_2/recipe.dart';
 import 'package:esercizio_2_2/recipeDetail.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +48,7 @@ class _RecipeListState extends State<RecipeListState> {
         '- Poi sbucciate le patate e tagliatele a dadini. Lavate quindi i broccoli eliminando i gambi e dividendoli in cimette.',
         '- In un tegame capiente ponete il burro a fondere, aggiungete i porri e fateli appassire per qualche minuto a fiamma dolce.',
         '- e fateli appassire a fuoco basso per 10-15 minuti, senza fargli prendere colore.',
-        '- Aggiungete nel tegame le patate e i broccoli e fateli rosolare per qualche minuto mescolando', 
+        '- Aggiungete nel tegame le patate e i broccoli e fateli rosolare per qualche minuto mescolando',
         '- poi aggiungete il brodo vegetale caldo e continuate la cottura per circa 30 minuti a fuoco dolce, salando e pepando',
         '- Trascorso il tempo indicato, passate le verdure con un frullatore ad immersione. Rimettete la vellutata così ottenuta sul fuoco',
         '- aggiustate di sale e aggiungete qualche fogliolina di timo',
@@ -81,7 +81,7 @@ class _RecipeListState extends State<RecipeListState> {
         '- Aggiungete un mestolo di acqua di cottura, regolandovi in base alla cremosità del condimento',
         '- Saltate la pasta con i broccoli per qualche istante quindi servitela con pepe a piacere BUON APPETITO!',
       ],
-      url: 'https://ricette.giallozafferano.it/Pasta-con-broccoli.html'
+      url: 'https://ricette.giallozafferano.it/Pasta-con-broccoli.html',
     ),
   ];
 
@@ -107,9 +107,10 @@ class _RecipeListState extends State<RecipeListState> {
               );
             },
             trailing: IconButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Link: ${recipe.url}')));
-                }, 
+              onPressed: () async {
+                final uri = Uri.parse(recipe.url);
+                await launchUrl(uri, mode: LaunchMode.externalApplication);
+              },
               icon: Icon(Icons.link),
             ),
           );
