@@ -26,7 +26,7 @@ class CartScreen extends StatelessWidget {
                         child: ListTile(
                           title: Text(item.product.name),
                           subtitle: Text(
-                              "\$${item.product.price.toStringAsFixed(2)} x ${item.quantity} = \$${(item.product.price * item.quantity).toStringAsFixed(2)}"),
+                              "€ ${(item.product.price * item.quantity).toStringAsFixed(2)}"),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -49,7 +49,7 @@ class CartScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    "Totale: \$${cart.totalPrice.toStringAsFixed(2)}",
+                    "Totale: € ${cart.totalPrice.toStringAsFixed(2)}",
                     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
